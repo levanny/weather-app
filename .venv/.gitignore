@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+#idea
+.idea
+
+# VSCode settings (if using VSCode)
+.vscode/
+
+# Environment variable files
+.env
+.env.*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Test-related
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter Notebook checkpoints (if used)
+.ipynb_checkpoints/
+
+# Database files (if any SQLite or temp data)
+*.sqlite3
+*.db
+
+# Logs
+*.log
+
+# Compiled binary files
+*.so
+*.pyd
+*.dll
+
+# Package management
+pip-wheel-metadata/
+*.egg-info/
+dist/
+build/
