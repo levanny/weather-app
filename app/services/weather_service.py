@@ -18,6 +18,11 @@ async def fetch_weather(city: str):
     return {
         "city": data["name"],
         "temperature": data["main"]["temp"],
+        "feels_like": data["main"]["feels_like"],
         "humidity": data["main"]["humidity"],
-        "weather": data["weather"][0]["description"]
+        "wind_speed": data["wind"]["speed"],
+        "sunrise": data["sys"]["sunrise"],
+        "sunset": data["sys"]["sunset"],
+        "description": data["weather"][0]["description"],
+        "icon": data["weather"][0]["icon"]
     }
