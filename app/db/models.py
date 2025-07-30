@@ -17,4 +17,5 @@ class Weather(Base):
     sunset = Column(BigInteger)  # store as UNIX timestamp
     description = Column(String)
     icon = Column(String)
+
 """
