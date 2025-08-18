@@ -1,0 +1,20 @@
+[project]
+name = "my-app"
+version = "0.1.0"
+description = "FastAPI project"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "httpx",
+    "python-dotenv",
+    "asyncpg",
+    "sqlalchemy",
+    "databases",
+    "pydantic-settings"
+]
+
+[tool.uv]
+# optional: you can lock Python version for consistency
+python = "3.12"
