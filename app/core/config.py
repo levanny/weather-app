@@ -1,6 +1,7 @@
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
+    CITIES = ["kutaisi", "batumi", "samtredia", "tbilisi", "zugdidi"]
     api_key: str
     base_url: str = "https://api.openweathermap.org/data/2.5/weather"
     database_url: str
