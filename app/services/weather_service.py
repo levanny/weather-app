@@ -1,7 +1,7 @@
 import httpx
 from fastapi import HTTPException
 from app.core.config import settings
-
+import datetime
 async def fetch_weather(city: str):
     params = {
         "q": city,
@@ -15,6 +15,8 @@ async def fetch_weather(city: str):
             raise HTTPException(status_code=response.status_code, detail="Weather API error")
         data = response.json()
 
+    fetch_time = datetime.datetime.utcnow()  # Record exact fetch time
+
     return {
         "city": data["name"],
         "temperature": data["main"]["temp"],
@@ -24,5 +26,6 @@ async def fetch_weather(city: str):
         "sunrise": data["sys"]["sunrise"],
         "sunset": data["sys"]["sunset"],
         "description": data["weather"][0]["description"],
-        "icon": data["weather"][0]["icon"]
+        "icon": data["weather"][0]["icon"],
+        "timestamp": fetch_time
     }
