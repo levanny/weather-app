@@ -16,5 +16,5 @@ dependencies = [
 ]
 
 [tool.uv]
-# optional: you can lock Python version for consistency
-python = "3.12"
+required-version = "3.12"
+
