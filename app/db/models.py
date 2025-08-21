@@ -13,8 +13,8 @@ class Weather(Base):
     feels_like = Column(Float)
     humidity = Column(Float)
     wind_speed = Column(Float)
-    sunrise = Column(Integer)  # UNIX timestamp
-    sunset = Column(Integer)   # UNIX timestamp
+    sunrise = Column(Integer)
+    sunset = Column(Integer)
     description = Column(String)
     icon = Column(String)
     timestamp = Column(DateTime, default=datetime.utcnow)
