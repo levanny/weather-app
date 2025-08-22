@@ -10,9 +10,10 @@ dependencies = [
     "httpx",
     "python-dotenv",
     "asyncpg",
-    "sqlalchemy",
+    "sqlalchemy[asyncio]",
     "databases",
-    "pydantic-settings"
+    "pydantic-settings",
+    "alembic>=1.16.4",
 ]
 
 [tool.uv]
