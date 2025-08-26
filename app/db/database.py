@@ -1,25 +1,33 @@
-# app/db/database.py
+import os
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
+from sqlalchemy.orm import sessionmaker, DeclarativeBase, declared_attr
+from sqlalchemy import MetaData
 
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.orm import sessionmaker
-from app.core.config import settings
-
-# Async engine for PostgreSQL
-engine = create_async_engine(
-    settings.database_url,
-    echo=True  # Optional: logs SQL queries for debugging
+metadata = MetaData(
+    naming_convention={
+        "ix": "ix_%(column_0_label)s",
+        "uq": "uq_%(table_name)s_%(column_0_name)s",
+        "ck": "ck_%(table_name)s_%(constraint_name)s",
+        "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+        "pk": "pk_%(table_name)s",
+    }
 )
 
-# Async session factory
-AsyncSessionLocal = sessionmaker(
-    bind=engine,
-    class_=AsyncSession,
-    expire_on_commit=False
+class Base(DeclarativeBase):
+    metadata = metadata
+    @declared_attr.directive
+    def __tablename__(cls) -> str:
+        return cls.__name__.lower()
+
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql+asyncpg://postgres:postgres@db:5432/postgres"  # default for docker-compose
 )
 
-# Dependency to get DB session in FastAPI endpoints
-async def get_session() -> AsyncSession:
+engine = create_async_engine(DATABASE_URL, echo=True, future=True)
+
+AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)
+
+async def get_db() -> AsyncSession:
     async with AsyncSessionLocal() as session:
         yield session
-
-get_db = get_session()
