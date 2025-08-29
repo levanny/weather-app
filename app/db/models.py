@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime
-from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from app.db.database import Base
+from sqlalchemy import func
 
 class Weather(Base):
     id = Column(Integer, primary_key=True, index=True)
