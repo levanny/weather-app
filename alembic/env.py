@@ -12,6 +12,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app.db.database import Base  # target_metadata
 from app.core.config import settings
+from app.db.models import Weather
 
 config = context.config
 if config.config_file_name is not None:
