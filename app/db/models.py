@@ -1,12 +1,9 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
-
-Base = declarative_base()
+from app.db.database import Base
 
 class Weather(Base):
-    __tablename__ = "weather"
-
     id = Column(Integer, primary_key=True, index=True)
     city = Column(String, index=True)
     temperature = Column(Float)
