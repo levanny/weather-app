@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 import asyncio
 
 from app.services.weather_service import fetch_weather
-from app.db.models import Weather, Base
+from app.db.models import Weather
 from app.db.database import engine, get_db, AsyncSessionLocal
 from app.core.config import settings
 
