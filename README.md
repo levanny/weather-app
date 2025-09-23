@@ -59,5 +59,6 @@ README.md
 
 
 
+In order to fill table 'users' with dummy data run: (    docker-compose exec app uv run python -m app.db.seed_users   )  when the container is already running
 
 
