@@ -21,7 +21,7 @@ class Base(DeclarativeBase):
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql+asyncpg://postgres:FantasticFox@localhost:5432/postgres"
+    "postgresql+asyncpg://postgres:FantasticFox@db:5432/postgres"
 )
 
 engine = create_async_engine(DATABASE_URL, echo=True, future=True)
