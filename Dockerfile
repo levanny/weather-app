@@ -7,9 +7,13 @@ COPY pyproject.toml uv.lock ./
 RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked --no-install-project
 
 COPY ./app ./app
+COPY alembic.ini ./alembic.ini
+COPY alembic ./alembic
+COPY entrypoint.sh ./entrypoint.sh
 
+RUN chmod +x entrypoint.sh
 RUN --mount=type=cache,target=/root/.cache/uv uv sync --locked
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["./entrypoint.sh"]
